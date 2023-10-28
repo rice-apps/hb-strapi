@@ -731,6 +731,8 @@ export interface ApiVendorVendor extends Schema.CollectionType {
       'manyToMany',
       'api::category.category'
     >;
+    primaryImage: Attribute.Media;
+    additionalImages: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

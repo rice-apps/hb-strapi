@@ -20,6 +20,20 @@
       "relation": "manyToMany",
       "target": "api::category.category",
       "mappedBy": "vendors"
+    },
+    "primaryImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "additionalImages": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }
