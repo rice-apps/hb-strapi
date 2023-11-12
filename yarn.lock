@@ -2546,7 +2546,7 @@
     "@strapi/utils" "4.14.4"
     "fs-extra" "10.0.0"
 
-"@strapi/strapi@^4.3.4", "@strapi/strapi@4.14.4":
+"@strapi/strapi@^4.0.7", "@strapi/strapi@^4.3.4", "@strapi/strapi@4.14.4":
   "integrity" "sha512-XCg/DV4GpmYEz0IJJhR/YqcQLYB++EiYSUy5H40Ta2oKruCrfibFWxoNJt/LWuVqYu2YYZFJI8peQd+mXXRdxQ=="
   "resolved" "https://registry.npmjs.org/@strapi/strapi/-/strapi-4.14.4.tgz"
   "version" "4.14.4"
@@ -9346,6 +9346,11 @@
   "resolved" "https://registry.npmjs.org/std-env/-/std-env-3.4.3.tgz"
   "version" "3.4.3"
 
+"strapi-plugin-transformer@^3.1.2":
+  "integrity" "sha512-aRjWqrZJ2QcsSDqOE27xzzmDG1c+yg8o9yUb5zFhR94+4zbGxTpLQndelkWtzNaLv5s2HhExx1JyCn/F9GZPpQ=="
+  "resolved" "https://registry.npmjs.org/strapi-plugin-transformer/-/strapi-plugin-transformer-3.1.2.tgz"
+  "version" "3.1.2"
+
 "stream-browserify@3.0.0":
   "integrity" "sha512-H73RAHsVBapbim0tU2JwwOiXUj+fikfiaoYAKHF3VJfA0pe2BCzkhAHBlLG6REzE+2WNZcxOXjK7lkso+9euLA=="
   "resolved" "https://registry.npmjs.org/stream-browserify/-/stream-browserify-3.0.0.tgz"
@@ -10305,7 +10310,7 @@
   "resolved" "https://registry.npmjs.org/yocto-queue/-/yocto-queue-0.1.0.tgz"
   "version" "0.1.0"
 
-"yup@0.32.9":
+"yup@^0.32.9", "yup@0.32.9":
   "integrity" "sha512-Ci1qN+i2H0XpY7syDQ0k5zKQ/DoxO0LzPg8PAR/X4Mpj6DqaeCoIYEEjDJwhArh3Fa7GWbQQVDZKeXYlSH4JMg=="
   "resolved" "https://registry.npmjs.org/yup/-/yup-0.32.9.tgz"
   "version" "0.32.9"
