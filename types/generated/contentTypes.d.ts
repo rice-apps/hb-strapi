@@ -714,6 +714,34 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiItemItem extends Schema.CollectionType {
+  collectionName: 'items';
+  info: {
+    singularName: 'item';
+    pluralName: 'items';
+    displayName: 'Item';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    price: Attribute.Decimal &
+      Attribute.SetMinMax<{
+        min: 0;
+      }>;
+    name: Attribute.String;
+    image: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::item.item', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::item.item', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiVendorVendor extends Schema.CollectionType {
   collectionName: 'vendors';
   info: {
@@ -726,7 +754,7 @@ export interface ApiVendorVendor extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
+    name: Attribute.String & Attribute.Unique;
     categories: Attribute.Relation<
       'api::vendor.vendor',
       'manyToMany',
@@ -734,6 +762,8 @@ export interface ApiVendorVendor extends Schema.CollectionType {
     >;
     primaryImage: Attribute.Media;
     additionalImages: Attribute.Media;
+    shortDesc: Attribute.String;
+    description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -769,6 +799,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::category.category': ApiCategoryCategory;
+      'api::item.item': ApiItemItem;
       'api::vendor.vendor': ApiVendorVendor;
     }
   }
