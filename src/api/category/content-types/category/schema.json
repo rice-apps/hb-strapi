@@ -20,6 +20,16 @@
       "relation": "manyToMany",
       "target": "api::vendor.vendor",
       "inversedBy": "categories"
+    },
+    "primaryImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
