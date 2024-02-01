@@ -742,6 +742,37 @@ export interface ApiItemItem extends Schema.CollectionType {
   };
 }
 
+export interface ApiUserformUserform extends Schema.CollectionType {
+  collectionName: 'userforms';
+  info: {
+    singularName: 'userform';
+    pluralName: 'userforms';
+    displayName: 'User Form';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    emailString: Attribute.String;
+    phoneNumberString: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::userform.userform',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::userform.userform',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiVendorVendor extends Schema.CollectionType {
   collectionName: 'vendors';
   info: {
@@ -794,12 +825,15 @@ declare module '@strapi/types' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
+      'plugin::ezforms.submission': PluginEzformsSubmission;
+      'plugin::ezforms.recipient': PluginEzformsRecipient;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::category.category': ApiCategoryCategory;
       'api::item.item': ApiItemItem;
+      'api::userform.userform': ApiUserformUserform;
       'api::vendor.vendor': ApiVendorVendor;
     }
   }
