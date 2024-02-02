@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "userforms",
+  "info": {
+    "singularName": "userform",
+    "pluralName": "userforms",
+    "displayName": "User Form",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "emailString": {
+      "type": "string"
+    },
+    "phoneNumberString": {
+      "type": "string"
+    }
+  }
+}
