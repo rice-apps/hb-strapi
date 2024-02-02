@@ -1,5 +1,5 @@
 import { Strapi } from '@strapi/strapi';
-const client = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+//const client = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
 export default ({ strapi }: { strapi: Strapi }) => ({
   async sendMessages(messageContent) {
@@ -12,13 +12,14 @@ export default ({ strapi }: { strapi: Strapi }) => ({
     entries.forEach((entry) => {
       // Send a twilio message
       // twilio.sendMessage(entry.phoneNumberString, messageContent);
+      /** 
       client.messages
       .create({
          body: messageContent,
          from: '+17865286322',
          to: entry.phoneNumberString
        })
-      .then(message => console.log(message.sid));
+      .then(message => console.log(message.sid));*/
     });
   },
 });
