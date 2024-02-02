@@ -35,7 +35,6 @@ export default {
     app.injectContentManagerComponent("listView", "actions", {
       name: "twilio-send-all",
       Component: () => {
-        console.log(JSON.stringify(useCMEditViewDataManager()));
         const slug = useSlug();
         const [open, setOpen] = useState(false);
         const [content, setContent] = useState("");
