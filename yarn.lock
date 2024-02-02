@@ -2634,6 +2634,11 @@
   resolved "https://registry.yarnpkg.com/@strapi/icons/-/icons-1.12.0.tgz#97e56d607dab3d866cf04362b562727c1da7699f"
   integrity sha512-tidl4nbaa7NRR1pPRJ3HfxjqE92nFX7ZKiaIFutlgWrNiS+u3zbEkF1mpG5IZ6BWJnx75h52lATo2YEdyofloA==
 
+"@strapi/icons@^1.14.1":
+  version "1.14.1"
+  resolved "https://registry.yarnpkg.com/@strapi/icons/-/icons-1.14.1.tgz#8f820512d0c9a8b75570f7a96ea42c969f65263b"
+  integrity sha512-ja3et1QIo+6kTfk/mzeSiLTtZ6pCC6mwvUlp8qGyBTQ5BJvMacgxEdXBnYRn6fbYt6fl7gAKCORRQpnHNQfwjg==
+
 "@strapi/logger@4.14.4":
   version "4.14.4"
   resolved "https://registry.yarnpkg.com/@strapi/logger/-/logger-4.14.4.tgz#357ee86147e4fc1bfb5036d79052c10051bd3481"

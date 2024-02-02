@@ -36,4 +36,8 @@ module.exports = ({ env }) => ({
       // See `Config` section.
     },
   },
+  'twilio-send-all': {
+    enabled: true,
+    resolve: './src/plugins/twilio-send-all'
+  },
 });
