@@ -742,6 +742,39 @@ export interface ApiItemItem extends Schema.CollectionType {
   };
 }
 
+export interface ApiSubtitleSubtitle extends Schema.SingleType {
+  collectionName: 'subtitles';
+  info: {
+    singularName: 'subtitle';
+    pluralName: 'subtitles';
+    displayName: 'subtitle';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    vendors: Attribute.String;
+    categories: Attribute.String;
+    map: Attribute.String;
+    notifications: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::subtitle.subtitle',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::subtitle.subtitle',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiUserformUserform extends Schema.CollectionType {
   collectionName: 'userforms';
   info: {
@@ -831,6 +864,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::category.category': ApiCategoryCategory;
       'api::item.item': ApiItemItem;
+      'api::subtitle.subtitle': ApiSubtitleSubtitle;
       'api::userform.userform': ApiUserformUserform;
       'api::vendor.vendor': ApiVendorVendor;
     }

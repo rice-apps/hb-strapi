@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "subtitles",
+  "info": {
+    "singularName": "subtitle",
+    "pluralName": "subtitles",
+    "displayName": "subtitle"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "vendors": {
+      "type": "string"
+    },
+    "categories": {
+      "type": "string"
+    },
+    "map": {
+      "type": "string"
+    },
+    "notifications": {
+      "type": "string"
+    }
+  }
+}
