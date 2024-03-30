@@ -732,6 +732,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'api::vendor.vendor'
     >;
     primaryImage: Attribute.Media;
+    smallIcon: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

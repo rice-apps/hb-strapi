@@ -28,6 +28,14 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "smallIcon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }
