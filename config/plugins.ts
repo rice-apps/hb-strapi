@@ -41,7 +41,7 @@ module.exports = ({ env }) => ({
     resolve: './src/plugins/twilio-send-all'
   },
   "image-optimizer": {
-    enabled: true,
+    enabled: false,
     config: {
       include: ["jpeg", "jpg", "png"],
       exclude: ["gif"],
