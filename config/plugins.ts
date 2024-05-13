@@ -32,6 +32,7 @@ module.exports = ({ env }) => ({
   },
   'import-export-entries': {
     enabled: true,
+    resolve: './src/plugins/strapi-plugin-import-export-entries',
     config: {
       // See `Config` section.
     },

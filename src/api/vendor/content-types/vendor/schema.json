@@ -10,7 +10,19 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "import-export-entries": {
+      "alias": {
+        "Company": "name",
+        "NM Category 1": "categories",
+        "NM Category 2": "categories",
+        "NM Description": "shortDesc",
+        "Program City/State": "location",
+        "Program Phone": "phone",
+        "Program Email": "email"
+      }
+    }
+  },
   "attributes": {
     "name": {
       "type": "string",
@@ -43,6 +55,15 @@
     },
     "description": {
       "type": "text"
+    },
+    "email": {
+      "type": "email"
+    },
+    "location": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
     }
   }
 }
