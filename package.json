@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "A Strapi application",
   "scripts": {
-    "prebuild": "cd src/plugins/twilio-send-all && yarn run build && cd ../strapi-plugin-import-export-entries-plugin && yarn run build",
+    "prebuild": "cd src/plugins/twilio-send-all && yarn run build",
     "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
