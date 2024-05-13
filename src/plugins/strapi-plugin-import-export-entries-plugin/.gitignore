@@ -134,7 +134,3 @@ dist
 data.sqlite
 
 # Build folders
-/libs/
-/server/
-/types/
-uploads/
