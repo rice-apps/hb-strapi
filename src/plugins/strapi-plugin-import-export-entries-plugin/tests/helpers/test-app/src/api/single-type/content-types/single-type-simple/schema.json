@@ -1,0 +1,31 @@
+{
+  "kind": "singleType",
+  "collectionName": "single_type_simple",
+  "info": {
+    "singularName": "single-type-simple",
+    "pluralName": "single-type-simples",
+    "displayName": "SingleTypeSimple"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "component": {
+      "type": "component",
+      "repeatable": false,
+      "component": "component.component"
+    },
+    "componentRepeatable": {
+      "type": "component",
+      "repeatable": true,
+      "component": "component.component"
+    }
+  }
+}
