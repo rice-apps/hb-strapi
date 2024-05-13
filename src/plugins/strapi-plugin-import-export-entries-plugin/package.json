@@ -17,7 +17,7 @@
     "server/"
   ],
   "scripts": {
-    "build": "tsc --build",
+    "build": "tsc -p tsconfig.server.json && tsc --build",
     "build:clean": "rm -rf libs server types",
     "dev": "nodemon --exec yarn build",
     "lint:check": "eslint ./src ./admin && yarn prettier --check ./src ./admin",
