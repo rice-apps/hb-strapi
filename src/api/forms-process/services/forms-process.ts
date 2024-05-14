@@ -9,7 +9,8 @@ export default () => ({
     async addUserForm(emailString: string, phoneNumberString: string, token: string) {
         // Check if token is valid
         const verifyResult = await recaptcha.verify(token);
-        if (verifyResult.success && verifyResult.score > 0.5) {
+        strapi.log.info("Recaptcha verify result: " + JSON.stringify(verifyResult));
+        if (verifyResult.success && verifyResult.score >= 0.5) {
             // Adds to DB
             await strapi.query("api::userform.userform").create({
                 data: {
