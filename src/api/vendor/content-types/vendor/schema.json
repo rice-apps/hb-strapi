@@ -19,7 +19,8 @@
         "NM Description": "shortDesc",
         "Program City/State": "location",
         "Program Phone": "phone",
-        "Program Email": "email"
+        "Program Email": "email",
+        "The": "the"
       }
     }
   },
@@ -64,6 +65,12 @@
     },
     "phone": {
       "type": "string"
+    },
+    "mapId": {
+      "type": "biginteger"
+    },
+    "the": {
+      "type": "boolean"
     }
   }
 }
