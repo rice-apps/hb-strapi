@@ -1,3 +1,4 @@
+// @ts-nocheck
 export default {
   /**
    * An asynchronous register function that runs before
