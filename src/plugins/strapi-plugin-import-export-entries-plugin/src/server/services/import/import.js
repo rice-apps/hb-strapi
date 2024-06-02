@@ -97,13 +97,15 @@ const updateOrCreate = async (user, slug, data, idField = 'id', alias = {}) => {
   }
 
   for (let key in data) {
-    if (key.includes('Category')) {
+    if (key.includes('Category') && String(data[key]).trim().length != 0) {
       const entry = await strapi.db.query('api::category.category').findOne({
         select: ['name', 'id'],
         where: { name: data[key] },
       });
-      if (entry) {
+      if (entry && entry.id) {
         data[key] = entry.id;
+      } else {
+        delete data[key];
       }
     }
   }
@@ -122,12 +124,16 @@ const updateOrCreate = async (user, slug, data, idField = 'id', alias = {}) => {
       // as an array
       if (data[aliasName]) {
         if (!Array.isArray(data[aliasName])) {
-          data[aliasName] = [data[aliasName], data[key]];
+          data[aliasName] = [data[aliasName]];
         } else {
           data[aliasName].push(data[key]);
         }
       } else {
         data[aliasName] = data[key];
+      }
+
+      if (data[aliasName].length == 0) {
+        delete data[aliasName];
       }
       delete data[key];
     }
@@ -138,7 +144,7 @@ const updateOrCreate = async (user, slug, data, idField = 'id', alias = {}) => {
   } else {
     entry = await updateOrCreateCollectionType(user, slug, data, idField, alias);
   }
-
+  /*
   // Go over emails and send out registration to them
   if (entry && entry.email) {
     const email = entry.email;
@@ -160,7 +166,7 @@ const updateOrCreate = async (user, slug, data, idField = 'id', alias = {}) => {
       )
 
     }
-  }
+  }*/
 
   return entry;
 };

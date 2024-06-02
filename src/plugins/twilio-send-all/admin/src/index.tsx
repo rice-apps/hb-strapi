@@ -16,6 +16,8 @@ import { useCMEditViewDataManager } from "@strapi/helper-plugin";
 import { useSlug } from "./hooks/useSlug";
 import { useState } from "react";
 import { api } from "./api";
+import { CheckPermissions } from "@strapi/helper-plugin";
+import { pluginPermissions } from "./permissions";
 
 const name = pluginPkg.strapi.name;
 
@@ -41,11 +43,11 @@ export default {
 
         if (slug && slug == "api::userform.userform") {
           return (
-            <>
+            <CheckPermissions permissions={pluginPermissions.smsButton}>
               <Button variant="tertiary" onClick={() => setOpen(true)}>
                 {"Send SMS"}
               </Button>
-              {open && (
+              {open ? (
                 <Portal>
                   <ModalLayout
                     onClose={() => setOpen(false)}
@@ -97,8 +99,59 @@ export default {
                     />
                   </ModalLayout>
                 </Portal>
+              ) : (
+                <></>
               )}
-            </>
+            </CheckPermissions>
+          );
+        } else if (slug && slug == "api::vendor.vendor") {
+          return (
+            <CheckPermissions permissions={pluginPermissions.signButton}>
+              <Button variant="tertiary" onClick={() => setOpen(true)}>
+                {"Send Sign-up links"}
+              </Button>
+              {open ? (
+                <Portal>
+                  <ModalLayout
+                    onClose={() => setOpen(false)}
+                    labelledBy="title"
+                  >
+                    <ModalHeader>Send message to all users</ModalHeader>
+                    <ModalBody className="plugin-ie-export_modal_body">
+                      This will send a sign-up link to all merchants who have
+                      not yet signed up. Are you sure you want to do this?
+                    </ModalBody>
+                    <ModalFooter
+                      startActions={
+                        <>
+                          <Button
+                            variant="danger"
+                            onClick={() => {
+                              setOpen(false);
+                              setContent("");
+                            }}
+                          >
+                            Cancel
+                          </Button>
+                        </>
+                      }
+                      endActions={
+                        <Button
+                          onClick={async () => {
+                            setOpen(false);
+                            await api.sendNotification();
+                          }}
+                        >
+                          Send
+                        </Button>
+                      }
+                    />
+                  </ModalLayout>
+                </Portal>
+              ) : (
+                <></>
+              )}
+            </CheckPermissions>
           );
         } else {
           return <></>;

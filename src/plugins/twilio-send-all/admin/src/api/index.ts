@@ -5,6 +5,7 @@ import pluginId from '../pluginId';
 
 export const api = {
   sendMessage,
+  sendNotification,
 };
 
 async function sendMessage({ messageContent } : { messageContent: string }) {
@@ -12,5 +13,12 @@ async function sendMessage({ messageContent } : { messageContent: string }) {
     method: 'POST',
     body: {content: messageContent},
   });
+  return data;
+}
+
+async function sendNotification() {
+  const data = await request(`/${pluginId}/sendNotification`, {
+    method: 'POST',
+  })
   return data;
 }

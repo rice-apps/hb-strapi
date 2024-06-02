@@ -94,20 +94,23 @@ const importOtherSlug = (data, { slug, user, idField, alias }) => __awaiter(void
  * @returns Updated/created entry.
  */
 const updateOrCreate = (user, slug, data, idField = 'id', alias = {}) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a, _b, _c;
+    var _a, _b;
     const relationAttributes = getModelAttributes(slug, { filterType: ['component', 'dynamiczone', 'media', 'relation'] });
     for (let attribute of relationAttributes) {
         // If the attribute name is an alias, replace it with the original name.
         data[attribute.name] = yield updateOrCreateRelation(user, attribute, data[attribute.name], alias);
     }
     for (let key in data) {
-        if (key.includes('Category')) {
+        if (key.includes('Category') && String(data[key]).trim().length != 0) {
             const entry = yield strapi.db.query('api::category.category').findOne({
                 select: ['name', 'id'],
                 where: { name: data[key] },
             });
-            if (entry) {
+            if (entry && entry.id) {
                 data[key] = entry.id;
+            }
+            else {
+                delete data[key];
             }
         }
     }
@@ -125,7 +128,7 @@ const updateOrCreate = (user, slug, data, idField = 'id', alias = {}) => __await
             // as an array
             if (data[aliasName]) {
                 if (!Array.isArray(data[aliasName])) {
-                    data[aliasName] = [data[aliasName], data[key]];
+                    data[aliasName] = [data[aliasName]];
                 }
                 else {
                     data[aliasName].push(data[key]);
@@ -133,6 +136,9 @@ const updateOrCreate = (user, slug, data, idField = 'id', alias = {}) => __await
             }
             else {
                 data[aliasName] = data[key];
+            }
+            if (data[aliasName].length == 0) {
+                delete data[aliasName];
             }
             delete data[key];
         }
@@ -143,23 +149,29 @@ const updateOrCreate = (user, slug, data, idField = 'id', alias = {}) => __await
     else {
         entry = yield updateOrCreateCollectionType(user, slug, data, idField, alias);
     }
+    /*
     // Go over emails and send out registration to them
     if (entry && entry.email) {
-        const email = entry.email;
-        // Get role id
-        const role = yield strapi.db.query("admin::role").findOne({
-            select: ['name', 'id'],
-            where: { name: 'Vendor' },
-        });
-        if (role) {
-            // Create user with service
-            const user = yield strapi.service("admin::user").create({
-                firstname: (_c = entry.name) !== null && _c !== void 0 ? _c : email,
-                email: email,
-                roles: [role.id],
-            });
-        }
-    }
+      const email = entry.email;
+  
+      // Get role id
+      const role = await strapi.db.query("admin::role").findOne({
+        select: ['name', 'id'],
+        where: { name: 'Vendor' },
+      });
+      
+      if (role) {
+        // Create user with service
+        const user = await strapi.service("admin::user").create(
+          {
+            firstname: entry.name ?? email,
+            email: email,
+            roles: [role.id],
+          }
+        )
+  
+      }
+    }*/
     return entry;
 });
 const updateOrCreateCollectionType = (user, slug, data, idField) => __awaiter(void 0, void 0, void 0, function* () {
@@ -202,7 +214,7 @@ const updateOrCreateSingleType = (user, slug, data, idField) => __awaiter(void 0
  * @param {number | Object | Array<Object>} relData
  */
 const updateOrCreateRelation = (user, rel, relData, alias) => __awaiter(void 0, void 0, void 0, function* () {
-    var _d;
+    var _c;
     if (relData == null) {
         return null;
     }
@@ -240,7 +252,7 @@ const updateOrCreateRelation = (user, rel, relData, alias) => __awaiter(void 0, 
         relData = rel.multiple ? relData : relData.slice(0, 1);
         const entryIds = [];
         for (const relDatum of relData) {
-            const media = yield findOrImportFile(relDatum, user, { allowedFileTypes: (_d = rel.allowedTypes) !== null && _d !== void 0 ? _d : ['any'] });
+            const media = yield findOrImportFile(relDatum, user, { allowedFileTypes: (_c = rel.allowedTypes) !== null && _c !== void 0 ? _c : ['any'] });
             if (media === null || media === void 0 ? void 0 : media.id) {
                 entryIds.push(media.id);
             }

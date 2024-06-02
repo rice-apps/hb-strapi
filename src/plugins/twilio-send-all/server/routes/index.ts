@@ -7,4 +7,12 @@ export default [
       policies: [],
     },
   },
+  {
+    method: 'POST',
+    path: '/sendNotification',
+    handler: 'sendEmails.index',
+    config: {
+      policies: [],
+    },
+  },
 ];
