@@ -34,16 +34,6 @@ export default ({ strapi }: { strapi: Strapi }) => ({
       where: { name: 'Vendor' },
     });
 
-    console.log("sending email")
-    // Send email from strapi
-    await strapi.plugin('email').provider.send({
-      to: 'ahmed@alcassab.net',
-      from: 'no-reply@strapi.io',
-      subject: "You've been invited to join the Nutcracker Market's Merchant Portal",
-      text: `Hello, you have been invited to join the Nutcracker Market\'s Merchant Portal. Please click the link below to create your account and get started. https://hb-strapi-production.up.railway.app/admin/auth/register?registrationToken={user.registrationToken}`,
-    })
-    console.log("sent email")
-
     entries.forEach(async (entry) => {
       const email = entry.email;
       console.log(email);
@@ -54,8 +44,6 @@ export default ({ strapi }: { strapi: Strapi }) => ({
           return;
         }
         if (!user) {
-
-        console.log(user)
         // Create user with service
         user = await strapi.service("admin::user").create(
           {
@@ -65,7 +53,14 @@ export default ({ strapi }: { strapi: Strapi }) => ({
           }
         )
         } 
-        console.log(`sending email to uninitialized user ${user.firstname} at ${email}`)
+
+        // Send email from strapi
+        await strapi.plugin('email').provider.send({
+          to: email,
+          from: 'no-reply@strapi.io',
+          subject: "You've been invited to join the Nutcracker Market's Merchant Portal",
+          text: `Hello, you have been invited to join the Nutcracker Market\'s Merchant Portal. Please click the link below to create your account and get started. https://hb-strapi-production.up.railway.app/admin/auth/register?registrationToken=${user.registrationToken}`,
+        })
         
       }
     })
