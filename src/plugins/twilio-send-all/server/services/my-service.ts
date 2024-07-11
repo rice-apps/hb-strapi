@@ -36,7 +36,6 @@ export default ({ strapi }: { strapi: Strapi }) => ({
 
     entries.forEach(async (entry) => {
       const email = entry.email;
-      console.log(email);
       if (email && role) {
         let user = await strapi.query('admin::user').findOne({where: { email: email }});
         if (user && user.isActive) {
@@ -53,11 +52,11 @@ export default ({ strapi }: { strapi: Strapi }) => ({
           }
         )
         } 
-
+        console.log('sending email to ' + email)
         // Send email from strapi
-        await strapi.plugin('email').provider.send({
-          to: email,
-          from: 'no-reply@strapi.io',
+        await strapi.plugin('email').service('email').send({
+          to: 'ahmed@alcassab.net',
+          from: 'strapi@riceapps.org',
           subject: "You've been invited to join the Nutcracker Market's Merchant Portal",
           text: `Hello, you have been invited to join the Nutcracker Market\'s Merchant Portal. Please click the link below to create your account and get started. https://hb-strapi-production.up.railway.app/admin/auth/register?registrationToken=${user.registrationToken}`,
         })

@@ -805,6 +805,14 @@
   resolved "https://registry.yarnpkg.com/@strapi/icons/-/icons-1.14.1.tgz#8f820512d0c9a8b75570f7a96ea42c969f65263b"
   integrity sha512-ja3et1QIo+6kTfk/mzeSiLTtZ6pCC6mwvUlp8qGyBTQ5BJvMacgxEdXBnYRn6fbYt6fl7gAKCORRQpnHNQfwjg==
 
+"@strapi/provider-email-nodemailer@^4.25.3":
+  version "4.25.3"
+  resolved "https://registry.yarnpkg.com/@strapi/provider-email-nodemailer/-/provider-email-nodemailer-4.25.3.tgz#8ae630ffe31e4d1fdc8257da75737f9680167d33"
+  integrity sha512-/2Dd4aKM2mwEckKinxAXc1HIFa13ncuQHiYZs4FmLRMvBB2Xws0hHZq2gm0cQfJODxWuoH2IcsXsDnOiMuoflQ==
+  dependencies:
+    lodash "4.17.21"
+    nodemailer "6.9.1"
+
 "@strapi/typescript-utils@^4.6.0":
   version "4.19.1"
   resolved "https://registry.yarnpkg.com/@strapi/typescript-utils/-/typescript-utils-4.19.1.tgz#2f1aad628e9947a862542a50cdabb4df4cef0e25"
@@ -1699,6 +1707,11 @@ nano-time@1.0.0:
   integrity sha512-flnngywOoQ0lLQOTRNexn2gGSNuM9bKj9RZAWSzhQ+UJYaAFG9bac4DW9VHjUAzrOaIcajHybCTHe/bkvozQqA==
   dependencies:
     big-integer "^1.6.16"
+
+nodemailer@6.9.1:
+  version "6.9.1"
+  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.9.1.tgz#8249d928a43ed85fec17b13d2870c8f758a126ed"
+  integrity sha512-qHw7dOiU5UKNnQpXktdgQ1d3OFgRAekuvbJLcdG5dnEo/GtcTHRYM7+UfJARdOFU9WUQO8OiIamgWPmiSFHYAA==
 
 object-assign@^4.1.1:
   version "4.1.1"
