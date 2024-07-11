@@ -55,7 +55,7 @@ export default ({ strapi }: { strapi: Strapi }) => ({
         console.log('sending email to ' + email)
         // Send email from strapi
         await strapi.plugin('email').service('email').send({
-          to: 'ahmed@alcassab.net',
+          to: email,
           from: 'strapi@riceapps.org',
           subject: "You've been invited to join the Nutcracker Market's Merchant Portal",
           text: `Hello, you have been invited to join the Nutcracker Market\'s Merchant Portal. Please click the link below to create your account and get started. https://hb-strapi-production.up.railway.app/admin/auth/register?registrationToken=${user.registrationToken}`,
