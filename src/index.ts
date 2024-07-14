@@ -41,8 +41,8 @@ export default {
         // Check the number of categories
         if (
           event.params.data.categories &&
-          event.params.data.categories.connect.length -
-            event.params.data.categories.disconnect.length >
+          event.params.data.categories?.connect?.length -
+            event.params.data.categories?.disconnect?.length >
             2
         ) {
           throw new Error("An merchant can have a maximum of 2 categories");
@@ -57,8 +57,8 @@ export default {
         // Check the number of categories
         if (
           event.params.data.categories &&
-          event.params.data.categories.connect.length -
-            event.params.data.categories.disconnect.length +
+          event.params.data.categories?.connect?.length -
+            event.params.data.categories?.disconnect?.length +
             entry.categories.length >
             2
         ) {
