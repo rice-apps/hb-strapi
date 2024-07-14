@@ -100,7 +100,7 @@ const updateOrCreate = async (user, slug, data, idField = 'id', alias = {}) => {
     if (key.includes('Category') && String(data[key]).trim().length != 0) {
       const entry = await strapi.db.query('api::category.category').findOne({
         select: ['name', 'id'],
-        where: { name: data[key] },
+        where: { name: String(data[key]).trim() },
       });
       if (entry && entry.id) {
         data[key] = entry.id;
@@ -116,6 +116,7 @@ const updateOrCreate = async (user, slug, data, idField = 'id', alias = {}) => {
   if (aliasArg) {
     alias = aliasArg;
   }
+
   // Iterate over each of the keys in data
   for (let key in data) {
     const aliasName = alias[key];
@@ -125,9 +126,8 @@ const updateOrCreate = async (user, slug, data, idField = 'id', alias = {}) => {
       if (data[aliasName]) {
         if (!Array.isArray(data[aliasName])) {
           data[aliasName] = [data[aliasName]];
-        } else {
-          data[aliasName].push(data[key]);
         }
+        data[aliasName].push(data[key]);
       } else {
         data[aliasName] = data[key];
       }
