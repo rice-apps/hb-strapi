@@ -13,15 +13,16 @@ export default {
   async formProcess(ctx) {
   // Check if emailString and phoneNumberString are in formData
   if (
+    !ctx.request.name || 
     !ctx.request.body.emailString ||
     !ctx.request.body.phoneNumberString || !ctx.request.body.token
   ) {
-      return ctx.badRequest("Missing emailString or phoneNumberString");
+      return ctx.badRequest("Missing name or emailString or phoneNumberString");
   }
 
   // Adds to DB
   try {
-    await strapi.service("api::forms-process.forms-process").addUserForm(ctx.request.body.emailString, ctx.request.body.phoneNumberString, ctx.request.body.token);
+    await strapi.service("api::forms-process.forms-process").addUserForm(ctx.request.name, ctx.request.body.emailString, ctx.request.body.phoneNumberString, ctx.request.body.token);
   } catch (e) {
     strapi.log.error(e);
     return ctx.internalServerError("A Whoopsie Happened");
