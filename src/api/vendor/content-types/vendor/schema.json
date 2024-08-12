@@ -20,7 +20,9 @@
         "Program City/State": "location",
         "Program Phone": "phone",
         "Program Email": "email",
-        "The": "the"
+        "The": "the",
+        "NM New Merchant": "newMerchant",
+        "NM Booth No 24": "mapId"
       }
     }
   },
@@ -70,6 +72,9 @@
       "type": "biginteger"
     },
     "the": {
+      "type": "boolean"
+    },
+    "newMerchant": {
       "type": "boolean"
     }
   }
