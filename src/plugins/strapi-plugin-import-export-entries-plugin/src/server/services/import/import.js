@@ -127,7 +127,9 @@ const updateOrCreate = async (user, slug, data, idField = 'id', alias = {}) => {
         if (!Array.isArray(data[aliasName])) {
           data[aliasName] = [data[aliasName]];
         }
-        data[aliasName].push(data[key]);
+        if (data[key]) {
+          data[aliasName].push(data[key]);
+        }
       } else {
         data[aliasName] = data[key];
       }
